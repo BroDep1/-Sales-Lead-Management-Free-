@@ -1,0 +1,47 @@
+variables:
+  MAVEN_OPTS: >-
+    -Dhttps.protocols=TLSv1.2
+    -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
+    -Dorg.slf4j.simpleLogger.showDateTime=true
+    -Djava.awt.headless=true
+
+  MAVEN_CLI_OPTS: >-
+    --batch-mode
+    --errors
+    --fail-at-end
+    --show-version
+    --no-transfer-progress
+    -DinstallAtEnd=true
+    -DdeployAtEnd=true
+
+image: maven:3.9.6-eclipse-temurin-21-jammy
+
+stages:
+  - build
+  - publish
+
+before_script:
+  - cd "$CI_PROJECT_DIR"
+
+cache:
+  key: "maven-$CI_COMMIT_REF_SLUG"
+  paths:
+    - .m2/repository
+
+build:
+  stage: build
+  only:
+    - main
+  script:
+    - mvn $MAVEN_CLI_OPTS clean install -Dmaven.test.skip=true
+
+publish:
+  stage: publish
+  only:
+    - main
+  script:
+    - |
+      mvn $MAVEN_CLI_OPTS compile -Dmaven.test.skip=true jib:build
+      -Djib.to.auth.username=${CI_HUB_USER}
+      -Djib.to.auth.password=${CI_HUB_TOKEN}
+      -Djib.to.image=${CI_HUB_USER}/slm:latest

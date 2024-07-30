@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+  datasource:
+    url: jdbc:postgresql://localhost:5432/slm?reWriteBatchedInserts=true
+    password: postgres
+    username: postgres
+    hikari:
+      driver-class-name: org.postgresql.Driver
+      maximum-pool-size: 5
+  liquibase:
+    change-log: /db/changelog/db.changelog-master.xml
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    doc-expansion: list
