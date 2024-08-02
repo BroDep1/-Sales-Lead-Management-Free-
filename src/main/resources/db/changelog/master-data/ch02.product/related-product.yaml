@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${relatedProduct}
+      author: dnovysh
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${relatedProduct}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${relatedProduct}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${relatedProduct}_id
+              - column:
+                  name: sold_product_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${relatedProduct}_${product}_sold
+                    references: ${product}(id)
+              - column:
+                  name: recommended_product_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${relatedProduct}_${product}_recommended
+                    references: ${product}(id)

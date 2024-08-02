@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${company}
+      author: dnovysh
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${company}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${company}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${company}_id
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false

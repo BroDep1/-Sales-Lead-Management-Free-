@@ -6,6 +6,9 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
   <property name="schema" value="public"/>
-  <property name="user" value="app_user"/>
+
+  <include file="master-data/master-data-changelog.xml" relativeToChangelogFile="true"/>
+  <include file="transactional-data/transactional-data-changelog.xml"
+    relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
