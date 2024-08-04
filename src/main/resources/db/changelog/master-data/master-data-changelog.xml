@@ -10,6 +10,7 @@
   <property name="relatedProduct" value="related_product"/>
 
   <include file="ch01.company/company.yaml" relativeToChangelogFile="true"/>
+  <include file="ch01.company/populate-company.yaml" relativeToChangelogFile="true"/>
   <include file="ch02.product/product.yaml" relativeToChangelogFile="true"/>
   <include file="ch02.product/related-product.yaml" relativeToChangelogFile="true"/>
 

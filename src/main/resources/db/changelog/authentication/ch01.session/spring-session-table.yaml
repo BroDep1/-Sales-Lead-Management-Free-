@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.spring_session
+      author: dnovysh
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: public
+              tableName: spring_session
+      changes:
+        - sqlFile:
+            path: classpath:/org/springframework/session/jdbc/schema-postgresql.sql
+            encoding: UTF-8
+            splitStatements: true
+            stripComments: true
