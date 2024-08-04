@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${relatedProduct}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${client}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${client}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${client}_id
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: middle_name
+                  type: varchar(255)
+              - column:
+                  name: surname
+                  type: varchar(255)
+              - column:
+                  name: birthdate
+                  type: date
+              - column:
+                  name: mobile_phone
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: uq_${client}_mobile_phone
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: uq_${client}_email
+              - column:
+                  name: passport_series
+                  type: varchar(20)
+              - column:
+                  name: passport_number
+                  type: varchar(20)
+              - column:
+                  name: driver_license_series
+                  type: varchar(255)
+              - column:
+                  name: driver_license_number
+                  type: varchar(255)
+
+        - addUniqueConstraint:
+            columnNames: passport_series, passport_number
+            constraintName: uq_${client}_passport
+            tableName: ${client}
+        - addUniqueConstraint:
+            columnNames: driver_license_series, driver_license_number
+            constraintName: uq_${client}_driver_license
+            tableName: ${client}
