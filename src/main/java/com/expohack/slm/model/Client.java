@@ -27,6 +27,8 @@ public class Client {
 
   private String mobilePhone;
 
+  private String email;
+
   private String passportSeries;
 
   private String passportNumber;

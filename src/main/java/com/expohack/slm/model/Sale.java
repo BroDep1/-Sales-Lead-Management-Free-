@@ -3,6 +3,8 @@ package com.expohack.slm.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.UUID;
 import lombok.Getter;
@@ -17,9 +19,13 @@ public class Sale {
   @GeneratedValue
   private UUID id;
 
-  private UUID companyId;
+  @ManyToOne
+  @JoinColumn(name = "client_id")
+  private Client client;
 
-  private String product;
+  @ManyToOne
+  @JoinColumn(name = "product_id")
+  private Product product;
 
   private String productAdditionalData;
 
