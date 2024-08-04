@@ -22,17 +22,19 @@ databaseChangeLog:
                     nullable: false
                     primaryKeyName: pk_${sale}_id
               - column:
-                  name: company_id
+                  name: client_id
                   type: UUID
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_${sale}_${company}
-                    references: ${company}(id)
+                    foreignKeyName: fk_${sale}_${client}
+                    references: ${client}(id)
               - column:
-                  name: product
-                  type: varchar(100)
+                  name: product_id
+                  type: UUID
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_${sale}_${product}
+                    references: ${product}(id)
               - column:
                   name: product_additional_data
                   type: text
