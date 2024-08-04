@@ -8,9 +8,13 @@
   <property name="company" value="company"/>
   <property name="product" value="product"/>
   <property name="relatedProduct" value="related_product"/>
+  <property name="client" value="client"/>
+  <property name="sale" value="sale"/>
 
   <include file="ch01.company/company.yaml" relativeToChangelogFile="true"/>
   <include file="ch02.product/product.yaml" relativeToChangelogFile="true"/>
   <include file="ch02.product/related-product.yaml" relativeToChangelogFile="true"/>
+  <include file="ch03.client/client.yaml" relativeToChangelogFile="true"/>
+  <include file="ch04.sale/sale.yaml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
