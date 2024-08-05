@@ -3,19 +3,23 @@ package com.expohack.slm.model;
 import java.util.Date;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
+@ToString
 public class SalesDTO {
 
-  private UUID id;
+  private String id;
 
-  private UUID companyId;
+  private String companyId;
 
   private String clientName;
 
@@ -23,7 +27,7 @@ public class SalesDTO {
 
   private String clientSurname;
 
-  private Date clientBirthdate;
+  private String clientBirthdate;
 
   private String clientMobilePhone;
 
@@ -41,7 +45,7 @@ public class SalesDTO {
 
   private String productAdditionalData;
 
-  private Date validity;
+  private String validity;
 
   private String status;
 }
