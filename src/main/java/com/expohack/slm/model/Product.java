@@ -20,10 +20,6 @@ public class Product {
   @GeneratedValue
   private UUID id;
 
-  @ManyToOne
-  @JoinColumn(name = "company_id")
-  private Company company;
-
   private String name;
 
   private String description;

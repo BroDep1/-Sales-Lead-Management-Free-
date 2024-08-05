@@ -26,3 +26,13 @@ databaseChangeLog:
                   type: varchar(100)
                   constraints:
                     nullable: false
+              - column:
+                  name: inn
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: notification_address
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
