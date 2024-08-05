@@ -1,4 +1,4 @@
-package com.expohack.slm.model;
+package com.expohack.slm.matching.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

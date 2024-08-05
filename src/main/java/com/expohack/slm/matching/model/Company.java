@@ -1,20 +1,16 @@
-package com.expohack.slm.model;
+package com.expohack.slm.matching.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import java.util.UUID;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
-public class Product {
+public class Company {
 
   @Id
   @GeneratedValue
@@ -22,5 +18,7 @@ public class Product {
 
   private String name;
 
-  private String description;
+  private String inn;
+
+  private String notificationAddress;
 }

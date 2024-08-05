@@ -1,6 +1,6 @@
-package com.expohack.slm.repository;
+package com.expohack.slm.matching.repository;
 
-import com.expohack.slm.model.Client;
+import com.expohack.slm.matching.model.Client;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

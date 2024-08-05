@@ -1,9 +1,9 @@
-package com.expohack.slm.service;
+package com.expohack.slm.matching.service;
 
-import com.expohack.slm.model.Client;
-import com.expohack.slm.model.Company;
-import com.expohack.slm.model.Product;
-import com.expohack.slm.model.Sale;
+import com.expohack.slm.matching.model.Client;
+import com.expohack.slm.matching.model.Company;
+import com.expohack.slm.matching.model.Product;
+import com.expohack.slm.matching.model.Sale;
 import com.expohack.slm.model.SalesDTO;
 import java.util.List;
 import java.util.Optional;

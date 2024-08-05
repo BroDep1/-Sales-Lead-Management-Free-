@@ -1,16 +1,18 @@
-package com.expohack.slm.model;
+package com.expohack.slm.matching.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import java.util.UUID;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@NoArgsConstructor
 @Getter
 @Setter
-public class Company {
+public class Product {
 
   @Id
   @GeneratedValue
@@ -18,7 +20,5 @@ public class Company {
 
   private String name;
 
-  private String inn;
-
-  private String notificationAddress;
+  private String description;
 }

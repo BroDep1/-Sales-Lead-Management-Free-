@@ -1,7 +1,7 @@
-package com.expohack.slm.service;
+package com.expohack.slm.matching.service;
 
-import com.expohack.slm.model.Sale;
-import com.expohack.slm.repository.SaleRepository;
+import com.expohack.slm.matching.model.Sale;
+import com.expohack.slm.matching.repository.SaleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
