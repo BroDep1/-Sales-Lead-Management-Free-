@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${error}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${error}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${error}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${error}_id
+              - column:
+                  name: company_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${error}_${company}
+                    references: ${company}(id)
+              - column:
+                  name: product_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: message
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: send_date
+                  type: date
