@@ -22,13 +22,6 @@ databaseChangeLog:
                     nullable: false
                     primaryKeyName: pk_${product}_id
               - column:
-                  name: company_id
-                  type: UUID
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_${product}_${company}
-                    references: ${company}(id)
-              - column:
                   name: name
                   type: varchar(100)
                   constraints:

@@ -17,4 +17,8 @@ public class Company {
   private UUID id;
 
   private String name;
+
+  private String inn;
+
+  private String notificationAddress;
 }
