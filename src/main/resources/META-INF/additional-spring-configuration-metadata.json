@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "slm.remember-me.key",
+      "type": "java.lang.String",
+      "description": "A private key to prevent modification of the remember-me token."
+    },
+    {
+      "name": "slm.remember-me.token-validity-seconds",
+      "type": "java.lang.Integer",
+      "description": "The date and time when the remember-me token expires, expressed in milliseconds."
+    },
+    {
+      "name": "slm.remember-me.use-secure-cookie",
+      "type": "java.lang.Boolean",
+      "description": "A cookie with the Secure attribute is only sent to the server with an encrypted request over the HTTPS protocol."
+    }
+  ]
+}
