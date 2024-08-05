@@ -1,4 +1,4 @@
-package com.expohack.slm.model;
+package com.expohack.slm.matching.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

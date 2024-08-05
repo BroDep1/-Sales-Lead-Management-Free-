@@ -1,7 +1,7 @@
-package com.expohack.slm.service;
+package com.expohack.slm.matching.service;
 
-import com.expohack.slm.model.Client;
-import com.expohack.slm.repository.ClientRepository;
+import com.expohack.slm.matching.model.Client;
+import com.expohack.slm.matching.repository.ClientRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

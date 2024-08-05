@@ -1,9 +1,7 @@
-package com.expohack.slm.service;
+package com.expohack.slm.matching.service;
 
-import com.expohack.slm.model.Company;
-import com.expohack.slm.repository.CompanyRepository;
-import jakarta.persistence.EntityNotFoundException;
-import java.util.List;
+import com.expohack.slm.matching.model.Company;
+import com.expohack.slm.matching.repository.CompanyRepository;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

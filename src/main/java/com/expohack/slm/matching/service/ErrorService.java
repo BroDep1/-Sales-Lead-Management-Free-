@@ -1,13 +1,11 @@
-package com.expohack.slm.service;
+package com.expohack.slm.matching.service;
 
-import com.expohack.slm.model.Company;
-import com.expohack.slm.model.Error;
-import com.expohack.slm.model.SalesDTO;
-import com.expohack.slm.repository.ErrorRepository;
+import com.expohack.slm.matching.model.Company;
+import com.expohack.slm.matching.model.Error;
+import com.expohack.slm.matching.repository.ErrorRepository;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 @Service
