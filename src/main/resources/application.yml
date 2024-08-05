@@ -3,7 +3,7 @@ spring:
     name: '@project.artifactId@'
   datasource:
     url: jdbc:postgresql://localhost:5432/slm?reWriteBatchedInserts=true
-    password: postgres
+    password: pass123
     username: postgres
     hikari:
       driver-class-name: org.postgresql.Driver
@@ -11,8 +11,10 @@ spring:
   liquibase:
     change-log: /db/changelog/db.changelog-master.xml
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none
+
     open-in-view: false
     properties:
       hibernate:

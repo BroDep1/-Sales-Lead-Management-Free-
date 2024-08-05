@@ -25,7 +25,6 @@ databaseChangeLog:
                   name: company_id
                   type: UUID
                   constraints:
-                    nullable: false
                     foreignKeyName: fk_${error}_${company}
                     references: ${company}(id)
               - column:
