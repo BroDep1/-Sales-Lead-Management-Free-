@@ -1,3 +1,9 @@
+server:
+  servlet:
+    session:
+      cookie:
+        name: SLMSESSIONID
+
 spring:
   application:
     name: '@project.artifactId@'
@@ -18,6 +24,9 @@ spring:
       hibernate:
         jdbc:
           batch_size: 100
+  session:
+    jdbc:
+      initialize-schema: never
   jackson:
     serialization:
       write-dates-as-timestamps: false
@@ -29,3 +38,9 @@ springdoc:
     tags-sorter: alpha
     operations-sorter: alpha
     doc-expansion: list
+
+slm:
+  remember-me:
+    key: remember-me-key
+    token-validity-seconds: 604800
+    use-secure-cookie: false
