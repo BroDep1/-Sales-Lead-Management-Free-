@@ -7,6 +7,7 @@
 
   <property name="schema" value="public"/>
 
+  <include file="authentication/authentication-changelog.xml" relativeToChangelogFile="true"/>
   <include file="master-data/master-data-changelog.xml" relativeToChangelogFile="true"/>
   <include file="transactional-data/transactional-data-changelog.xml"
     relativeToChangelogFile="true"/>

@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${user}
+      author: dnovysh
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${user}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${user}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${user}_id
+              - column:
+                  name: company_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${user}_${company}
+                    references: ${company}(id)
+              - column:
+                  name: username
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: un_${user}_username
+              - column:
+                  name: password
+                  type: varchar(100)
+              - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: personnel_number
+                  type: varchar(60)
+              - column:
+                  name: account_non_expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: account_non_locked
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credentials_non_expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: admin
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: manager
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: employee
+                  type: boolean
+                  constraints:
+                    nullable: false
