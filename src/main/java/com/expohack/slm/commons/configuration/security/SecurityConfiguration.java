@@ -69,6 +69,7 @@ public class SecurityConfiguration {
             .requestMatchers(GET, "/api/v1/auth/user").authenticated()
             .requestMatchers("/api/v1/users/**").authenticated()
             .requestMatchers("/api/v1/dictionaries/**").authenticated()
+            .requestMatchers("/api/v1/companies/**").authenticated()
             .anyRequest().denyAll()
         )
         .formLogin(AbstractHttpConfigurer::disable)
