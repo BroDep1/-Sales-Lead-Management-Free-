@@ -1,10 +1,11 @@
 package com.expohack.slm.matching.service;
 
+import com.expohack.slm.commons.model.Company;
+import com.expohack.slm.commons.model.SalesDTO;
+import com.expohack.slm.commons.repository.CompanyRepository;
 import com.expohack.slm.matching.model.Client;
 import com.expohack.slm.matching.model.Product;
 import com.expohack.slm.matching.model.Sale;
-import com.expohack.slm.commons.model.Company;
-import com.expohack.slm.commons.model.SalesDTO;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class MatchingService {
 
   private final ErrorService errorService;
   private final ClientService clientService;
-  private final CompanyService companyService;
+  private final CompanyRepository companyRepository;
   private final ProductService productService;
   private final SaleService saleService;
 
@@ -43,7 +44,7 @@ public class MatchingService {
           sale.getProductName()
       );
 
-      Optional<Company> companyOptional = companyService.getById(sale.getCompanyId());
+      Optional<Company> companyOptional = companyRepository.findById(sale.getCompanyId());
 
       if (companyOptional.isEmpty()) {
         log.error(

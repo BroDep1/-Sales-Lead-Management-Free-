@@ -70,6 +70,7 @@ public class AuthenticationMapperImpl implements AuthenticationMapper {
 
   @Override
   public CompanyDto mapToCompanyDto(@NonNull Company source) {
-    return new CompanyDto(source.getId(), source.getName());
+    return new CompanyDto(source.getId(), source.getName(), source.getInn(),
+        source.getNotificationAddress());
   }
 }
