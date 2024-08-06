@@ -3,7 +3,7 @@ package com.expohack.slm.matching.service;
 import com.expohack.slm.matching.model.Product;
 import com.expohack.slm.matching.model.ProductMatch;
 import com.expohack.slm.matching.repository.ProductMatchRepository;
-import com.expohack.slm.model.Company;
+import com.expohack.slm.commons.model.Company;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.expohack.slm.model;
+package com.expohack.slm.commons.model;
 
 import com.expohack.slm.authentication.model.entity.User;
 import jakarta.persistence.Column;

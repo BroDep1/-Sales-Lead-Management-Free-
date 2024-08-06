@@ -1,4 +1,4 @@
-package com.expohack.slm.configuration.security;
+package com.expohack.slm.commons.configuration.security;
 
 import static org.springframework.http.HttpMethod.GET;
 
@@ -6,7 +6,7 @@ import com.expohack.slm.authentication.configurer.RestLoginConfigurer;
 import com.expohack.slm.authentication.handler.RestAuthenticationFailureHandler;
 import com.expohack.slm.authentication.handler.RestAuthenticationSuccessHandler;
 import com.expohack.slm.authentication.mapper.AuthenticationMapper;
-import com.expohack.slm.provider.DateTimeProvider;
+import com.expohack.slm.commons.provider.DateTimeProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;

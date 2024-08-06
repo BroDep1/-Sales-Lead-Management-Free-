@@ -1,4 +1,4 @@
-package com.expohack.slm.model;
+package com.expohack.slm.commons.model;
 
 import java.time.LocalDate;
 import java.util.UUID;

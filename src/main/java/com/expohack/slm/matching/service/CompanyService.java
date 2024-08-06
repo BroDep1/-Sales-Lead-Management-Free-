@@ -1,7 +1,7 @@
 package com.expohack.slm.matching.service;
 
-import com.expohack.slm.repository.CompanyRepository;
-import com.expohack.slm.model.Company;
+import com.expohack.slm.commons.repository.CompanyRepository;
+import com.expohack.slm.commons.model.Company;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

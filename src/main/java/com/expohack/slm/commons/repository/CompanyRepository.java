@@ -1,6 +1,6 @@
-package com.expohack.slm.repository;
+package com.expohack.slm.commons.repository;
 
-import com.expohack.slm.model.Company;
+import com.expohack.slm.commons.model.Company;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 

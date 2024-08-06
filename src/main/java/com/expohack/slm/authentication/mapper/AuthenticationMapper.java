@@ -3,7 +3,7 @@ package com.expohack.slm.authentication.mapper;
 import com.expohack.slm.authentication.model.dto.AuthenticatedUser;
 import com.expohack.slm.authentication.model.dto.CompanyDto;
 import com.expohack.slm.authentication.model.dto.UserCredentialsContainer;
-import com.expohack.slm.model.Company;
+import com.expohack.slm.commons.model.Company;
 import com.expohack.slm.authentication.model.entity.User;
 import java.util.Optional;
 import org.springframework.lang.NonNull;

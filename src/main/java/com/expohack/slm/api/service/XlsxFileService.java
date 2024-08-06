@@ -1,8 +1,8 @@
-package com.expohack.slm.service;
+package com.expohack.slm.api.service;
 
 import com.expohack.slm.matching.service.MatchingService;
-import com.expohack.slm.model.SalesDTO;
-import com.expohack.slm.utils.ExcelCellsConverter;
+import com.expohack.slm.commons.model.SalesDTO;
+import com.expohack.slm.api.utils.ExcelCellsConverter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
