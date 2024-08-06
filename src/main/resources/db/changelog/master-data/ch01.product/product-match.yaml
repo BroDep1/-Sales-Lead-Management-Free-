@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${productMatch}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${productMatch}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${productMatch}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${productMatch}_id
+              - column:
+                  name: product_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${productMatch}_${product}
+                    references: ${product}(id)
+              - column:
+                  name: company_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${productMatch}_${company}
+                    references: ${company}(id)
+              - column:
+                  name: company_product_name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false

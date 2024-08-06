@@ -1,4 +1,4 @@
-package com.expohack.slm.configuration.springdoc;
+package com.expohack.slm.commons.configuration.springdoc;
 
 import io.swagger.v3.oas.models.info.Info;
 import org.springdoc.core.models.GroupedOpenApi;

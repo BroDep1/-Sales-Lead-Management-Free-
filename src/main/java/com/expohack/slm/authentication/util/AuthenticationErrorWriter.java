@@ -1,7 +1,7 @@
 package com.expohack.slm.authentication.util;
 
 import com.expohack.slm.authentication.model.dto.AuthenticationErrorContent;
-import com.expohack.slm.provider.DateTimeProvider;
+import com.expohack.slm.commons.provider.DateTimeProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;

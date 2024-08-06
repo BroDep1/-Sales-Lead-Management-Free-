@@ -3,8 +3,13 @@ server:
     session:
       cookie:
         name: SLMSESSIONID
-
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+      file-size-threshold: 2MB
   application:
     name: '@project.artifactId@'
   datasource:
@@ -17,8 +22,10 @@ spring:
   liquibase:
     change-log: /db/changelog/db.changelog-master.xml
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none
+
     open-in-view: false
     properties:
       hibernate:
