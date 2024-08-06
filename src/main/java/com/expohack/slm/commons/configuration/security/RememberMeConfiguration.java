@@ -1,6 +1,6 @@
-package com.expohack.slm.configuration.security;
+package com.expohack.slm.commons.configuration.security;
 
-import com.expohack.slm.configuration.SlmProperties;
+import com.expohack.slm.commons.configuration.SlmProperties;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
