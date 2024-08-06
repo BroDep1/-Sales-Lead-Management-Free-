@@ -1,4 +1,4 @@
-package com.expohack.slm.exception;
+package com.expohack.slm.commons.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

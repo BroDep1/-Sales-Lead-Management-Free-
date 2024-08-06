@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create.table.${sale}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              schemaName: ${schema}
+              tableName: ${sale}
+      changes:
+        - createTable:
+            schemaName: ${schema}
+            tableName: ${sale}
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_${sale}_id
+              - column:
+                  name: client_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${sale}_${client}
+                    references: ${client}(id)
+              - column:
+                  name: product_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_${sale}_${product}
+                    references: ${product}(id)
+              - column:
+                  name: product_additional_data
+                  type: text
+              - column:
+                  name: validity
+                  type: date
+              - column:
+                  name: status
+                  type: varchar(10)
+              - column:
+                  name: sale_date
+                  type: date

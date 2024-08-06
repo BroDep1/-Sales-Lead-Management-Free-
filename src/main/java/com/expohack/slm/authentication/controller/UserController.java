@@ -9,7 +9,7 @@ import com.expohack.slm.authentication.model.dto.UserCreateRequest;
 import com.expohack.slm.authentication.model.dto.UserDto;
 import com.expohack.slm.authentication.model.dto.UserSaveDto;
 import com.expohack.slm.authentication.service.UserService;
-import com.expohack.slm.provider.DateTimeProvider;
+import com.expohack.slm.commons.provider.DateTimeProvider;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
