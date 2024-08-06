@@ -14,7 +14,7 @@ spring:
     name: '@project.artifactId@'
   datasource:
     url: jdbc:postgresql://localhost:5432/slm?reWriteBatchedInserts=true
-    password: pass123
+    password: postgres
     username: postgres
     hikari:
       driver-class-name: org.postgresql.Driver
