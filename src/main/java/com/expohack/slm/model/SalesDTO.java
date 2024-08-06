@@ -1,6 +1,6 @@
 package com.expohack.slm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +17,9 @@ import lombok.ToString;
 @ToString
 public class SalesDTO {
 
-  private String id;
+  private UUID id;
 
-  private String companyId;
+  private UUID companyId;
 
   private String clientName;
 
@@ -27,7 +27,7 @@ public class SalesDTO {
 
   private String clientSurname;
 
-  private String clientBirthdate;
+  private LocalDate clientBirthdate;
 
   private String clientMobilePhone;
 
@@ -41,11 +41,15 @@ public class SalesDTO {
 
   private String clientDriverLicenseNumber;
 
-  private String product;
+  private String productName;
 
   private String productAdditionalData;
 
-  private String validity;
+  private LocalDate validity;
+
+  private LocalDate sendDate;
+
+  private LocalDate saleDate;
 
   private String status;
 }
