@@ -21,7 +21,7 @@ public class UpdateController {
   @PostMapping
   public ResponseEntity<Void> uploadXlsx(@RequestParam("xlsx-file") MultipartFile file)
       throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-    var ok = xlsxFileService.send(file);
+    xlsxFileService.send(file);
     return ResponseEntity.noContent().build();
   }
 }

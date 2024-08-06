@@ -1,5 +1,6 @@
 package com.expohack.slm.service;
 
+import com.expohack.slm.matching.service.MatchingService;
 import com.expohack.slm.model.SalesDTO;
 import com.expohack.slm.utils.ExcelCellsConverter;
 import java.io.IOException;
@@ -21,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class XlsxFileService {
 
+  private final MatchingService matchingService;
+
   public List<SalesDTO> parse(InputStream stream)
       throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
     //Получение страницы эксель файла
@@ -38,9 +41,15 @@ public class XlsxFileService {
 
     //Маппинг названий полей из таблицы к дто
     while (firstRawCellIterator.hasNext()){
-      var name = firstRawCellIterator.next().getStringCellValue().toLowerCase();
-      Method method = SalesDTO.SalesDTOBuilder.class.getMethod(name, String.class);
-      methodsList.add(method);
+      var name = firstRawCellIterator.next().getStringCellValue();
+      var builderClass = SalesDTO.SalesDTOBuilder.class;
+      try {
+        Method method = builderClass.getMethod(name, String.class);
+        methodsList.add(method);
+      }
+      catch (NoSuchMethodException exception) {
+        log.error("No such field in SalesDto");
+      }
     }
     //Получение итератора по полям
     //Итерация происходит по списку методов, которые заполняют поля ДТО
@@ -68,12 +77,10 @@ public class XlsxFileService {
 
   public Optional<Void> send(MultipartFile file)
       throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-
     var listOfDto = parse(file.getInputStream());
     log.info(listOfDto.getFirst().toString());
-    //TODO matchingService.add(listOfDto)
+    matchingService.matchSales(listOfDto);
     return Optional.empty();
   }
-
 }
 
