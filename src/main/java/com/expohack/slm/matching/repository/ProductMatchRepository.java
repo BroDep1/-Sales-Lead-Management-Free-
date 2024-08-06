@@ -1,7 +1,7 @@
 package com.expohack.slm.matching.repository;
 
-import com.expohack.slm.matching.model.Company;
 import com.expohack.slm.matching.model.ProductMatch;
+import com.expohack.slm.model.Company;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

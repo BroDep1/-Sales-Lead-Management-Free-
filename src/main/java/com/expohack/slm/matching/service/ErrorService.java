@@ -1,8 +1,8 @@
 package com.expohack.slm.matching.service;
 
-import com.expohack.slm.matching.model.Company;
 import com.expohack.slm.matching.model.Error;
 import com.expohack.slm.matching.repository.ErrorRepository;
+import com.expohack.slm.model.Company;
 import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

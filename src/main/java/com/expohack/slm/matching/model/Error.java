@@ -1,5 +1,6 @@
 package com.expohack.slm.matching.model;
 
+import com.expohack.slm.model.Company;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

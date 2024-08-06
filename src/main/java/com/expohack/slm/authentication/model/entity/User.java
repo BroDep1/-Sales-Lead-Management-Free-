@@ -1,5 +1,6 @@
 package com.expohack.slm.authentication.model.entity;
 
+import com.expohack.slm.model.Company;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

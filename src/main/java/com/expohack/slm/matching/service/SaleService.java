@@ -15,5 +15,6 @@ public class SaleService {
 
   public void save(Sale newSale) {
     saleRepository.save(newSale);
+    log.info("Saved sale with id {}", newSale.getId());
   }
 }
