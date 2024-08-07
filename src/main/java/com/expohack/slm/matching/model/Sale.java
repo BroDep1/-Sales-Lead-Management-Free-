@@ -38,6 +38,8 @@ public class Sale {
 
   private String status;
 
+  private String systemStatus = "new";
+
   public Sale(
       Client client, Product product,
       String productAdditionalData, LocalDate validity,
