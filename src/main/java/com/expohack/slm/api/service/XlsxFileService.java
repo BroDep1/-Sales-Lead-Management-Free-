@@ -1,5 +1,6 @@
 package com.expohack.slm.api.service;
 
+import com.expohack.slm.authentication.model.dto.CompanyDto;
 import com.expohack.slm.matching.service.MatchingService;
 import com.expohack.slm.commons.model.SalesDTO;
 import com.expohack.slm.api.utils.ExcelCellsConverter;
@@ -63,7 +64,7 @@ public class XlsxFileService {
       var builder = SalesDTO.builder();
 
       //Итерация по полям строки
-      while (cellIterator.hasNext()) {
+      while (cellIterator.hasNext() && namesIterator.hasNext()) {
         //Получение доступа к методу, получение значения поля, и инвокация метода
         var methodInvoke = namesIterator.next();
         String value = ExcelCellsConverter.convertToString(cellIterator.next());
@@ -75,7 +76,7 @@ public class XlsxFileService {
     return salesDTOS;
   }
 
-  public Optional<Void> send(MultipartFile file)
+  public Optional<Void> send(CompanyDto companyDto, MultipartFile file)
       throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
     var listOfDto = parse(file.getInputStream());
     log.info(listOfDto.getFirst().toString());
