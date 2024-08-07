@@ -44,4 +44,16 @@ public class SpringdocConfiguration {
         .pathsToMatch(paths)
         .build();
   }
+
+  @Bean
+  public GroupedOpenApi xlsxUploadOpenApiGroup() {
+    String[] paths = {"/api/upload-data/**"};
+    return GroupedOpenApi.builder().group("gr04-xlsx")
+        .displayName("Загрузка файла")
+        .addOpenApiCustomizer(openApi -> openApi
+            .info(new Info().title("XlsxUpload API")
+                .version(apiVersion)))
+        .pathsToMatch(paths)
+        .build();
+  }
 }
