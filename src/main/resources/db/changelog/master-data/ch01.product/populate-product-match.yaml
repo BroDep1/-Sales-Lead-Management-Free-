@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate.table.${productMath}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from ${schema}.${productMatch}
+      changes:
+        - sqlFile:
+            path: db/changelog/script/demo-product-match-data.sql
+            encoding: UTF-8
+            splitStatements: true
+            stripComments: true
