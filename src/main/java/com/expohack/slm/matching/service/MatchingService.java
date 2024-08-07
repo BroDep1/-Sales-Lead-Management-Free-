@@ -24,7 +24,7 @@ public class MatchingService {
   private final ProductService productService;
   private final SaleService saleService;
 
-  // for each raw sales record,
+  // for each raw sales record
   // create a regular sales record if a product match is possible
   // if an error occurs, we save it for further feedback to the company
   @Transactional
@@ -44,6 +44,7 @@ public class MatchingService {
           sale.getProductName()
       );
 
+      // trying to find corresponding company data
       Optional<Company> companyOptional = companyRepository.findById(sale.getCompanyId());
 
       if (companyOptional.isEmpty()) {
@@ -92,6 +93,7 @@ public class MatchingService {
         continue;
       }
 
+      //trying to find and match products
       Optional<Product> productOptional = productService.matchProduct(
           company,
           sale.getProductName()
@@ -137,8 +139,9 @@ public class MatchingService {
 
       saleService.save(newSale);
 
-      // process the errors by sending notifications to the companies
-      // then just delete them from the table
+      // after all raw sales are processed
+      // traverse through the errors and send notifications to the companies
+      // after that just delete the errors
     }
   }
 }
