@@ -46,6 +46,18 @@ public class SpringdocConfiguration {
   }
 
   @Bean
+  public GroupedOpenApi companiesOpenApiGroup() {
+    String[] paths = {"/api/v1/companies/**"};
+    return GroupedOpenApi.builder().group("gr04-companies")
+        .displayName("Компании")
+        .addOpenApiCustomizer(openApi -> openApi
+            .info(new Info().title("Companies API")
+                .version(apiVersion)))
+        .pathsToMatch(paths)
+        .build();
+  }
+
+  @Bean
   public GroupedOpenApi xlsxUploadOpenApiGroup() {
     String[] paths = {"/api/upload-data/**"};
     return GroupedOpenApi.builder().group("gr04-xlsx")

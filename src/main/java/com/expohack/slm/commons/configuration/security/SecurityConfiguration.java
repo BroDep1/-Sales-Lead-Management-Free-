@@ -61,14 +61,17 @@ public class SecurityConfiguration {
     http
         .cors(AbstractHttpConfigurer::disable)
         .csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+        .authorizeHttpRequests((authorize) -> authorize
+            .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
             .requestMatchers(GET, "/static/**", "/v3/api-docs/**", "/swagger-ui.html",
                 "/swagger-ui/**", "/openapi/openapi.yml", "/error", "/error/**").permitAll()
+            .requestMatchers(SIGN_IN_PATH_MATCHER).permitAll()
             .requestMatchers(GET, "/api/v1/auth/user").authenticated()
             .requestMatchers("/api/v1/users/**").authenticated()
             .requestMatchers("/api/v1/dictionaries/**").authenticated()
-            .requestMatchers("/api/upload-data/**").authenticated()
-            .anyRequest().denyAll())
+            .requestMatchers("/api/v1/companies/**").authenticated()
+            .anyRequest().denyAll()
+        )
         .formLogin(AbstractHttpConfigurer::disable)
         .httpBasic(AbstractHttpConfigurer::disable)
         .with(RestLoginConfigurer.restLoginConfigurer(), restLogin -> restLogin

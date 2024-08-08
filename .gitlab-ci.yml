@@ -41,7 +41,7 @@ publish:
     - main
   script:
     - |
-      mvn $MAVEN_CLI_OPTS compile -Dmaven.test.skip=true jib:build
-      -Djib.to.auth.username=${CI_HUB_USER}
-      -Djib.to.auth.password=${CI_HUB_TOKEN}
+      mvn $MAVEN_CLI_OPTS compile -Dmaven.test.skip=true jib:build \
+      -Djib.to.auth.username=${CI_HUB_USER} \
+      -Djib.to.auth.password=${CI_HUB_TOKEN} \
       -Djib.to.image=${CI_HUB_USER}/slm:latest
