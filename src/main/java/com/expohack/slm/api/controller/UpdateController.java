@@ -41,7 +41,7 @@ public class UpdateController {
       @Parameter(hidden = true)
       @ModelAttribute(AUTHENTICATED_USER_COMPANY) CompanyDto company,
       @RequestParam("xlsx-file") MultipartFile file)
-      throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+      throws IOException, InvocationTargetException, IllegalAccessException {
     xlsxFileService.send(company, file);
     return ResponseEntity.ok().build();
   }
