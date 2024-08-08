@@ -15,6 +15,8 @@
   <include file="ch01.product/product.yaml" relativeToChangelogFile="true"/>
   <include file="ch01.product/product-match.yaml" relativeToChangelogFile="true"/>
   <include file="ch01.product/related-product.yaml" relativeToChangelogFile="true"/>
+  <include file="ch01.product/populate-product.yaml" relativeToChangelogFile="true"/>
+  <include file="ch01.product/populate-product-match.yaml" relativeToChangelogFile="true"/>
   <include file="ch02.client/client.yaml" relativeToChangelogFile="true"/>
   <include file="ch03.sale/sale.yaml" relativeToChangelogFile="true"/>
   <include file="ch04.error/error.yaml" relativeToChangelogFile="true"/>

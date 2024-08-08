@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate.table.${product}
+      author: shimady563
+      dbms: postgresql
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: select count(*) from ${schema}.${product}
+      changes:
+        - sqlFile:
+            path: db/changelog/script/demo-product-data.sql
+            encoding: UTF-8
+            splitStatements: true
+            stripComments: true
