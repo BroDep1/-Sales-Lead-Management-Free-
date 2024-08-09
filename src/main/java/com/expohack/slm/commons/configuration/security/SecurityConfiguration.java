@@ -69,6 +69,7 @@ public class SecurityConfiguration {
             .requestMatchers("/api/v1/dictionaries/**").authenticated()
             .requestMatchers("/api/v1/companies/**").authenticated()
             .requestMatchers("/api/v1/upload-data/**").authenticated()
+            .requestMatchers("/api/v1/results/**").authenticated()
             .anyRequest().denyAll())
         .formLogin(AbstractHttpConfigurer::disable)
         .httpBasic(AbstractHttpConfigurer::disable)
