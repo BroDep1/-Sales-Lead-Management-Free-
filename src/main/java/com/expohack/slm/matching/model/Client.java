@@ -25,7 +25,7 @@ public class Client {
 
   private String surname;
 
-  private LocalDate birthdate;
+  private LocalDate birthDate;
 
   private String mobilePhone;
 
@@ -40,14 +40,14 @@ public class Client {
   private String driverLicenseNumber;
 
   public Client(
-      String name, String middleName, String surname, LocalDate birthdate,
+      String name, String middleName, String surname, LocalDate birthDate,
       String mobilePhone, String email, String passportSeries, String passportNumber,
       String driverLicenseSeries, String driverLicenseNumber
   ) {
     this.name = name;
     this.middleName = middleName;
     this.surname = surname;
-    this.birthdate = birthdate;
+    this.birthDate = birthDate;
     this.mobilePhone = mobilePhone;
     this.email = email;
     this.passportSeries = passportSeries;
