@@ -1,10 +1,9 @@
 package com.expohack.slm.rabbitMq;
 
-import com.expohack.slm.api.service.XlsxFileService;
 import com.expohack.slm.commons.model.SalesDTO;
-import com.expohack.slm.matching.model.Sale;
 import com.expohack.slm.matching.service.MatchingService;
-import java.io.IOException;
+import com.expohack.slm.recommendation.model.dto.RecommendationLead;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +15,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerService {
 
-  private final MatchingService matchingService;
+  private final List<RecommendationLead> recommendationLeads = new ArrayList<>();
 
-  private final XlsxFileService xlsxFileService;
+  private final MatchingService matchingService;
 
   @RabbitListener(queues = "salesDtoQueue")
   public void consumeAnswer(List<SalesDTO> salesDTOS)  {
     log.info("Лист продаж пришел на обработку.");
     matchingService.matchSales(salesDTOS);
+  }
+
+  @RabbitListener(queues = "recommendationLeadQueue")
+  public List<RecommendationLead> consumeRecommendations(List<RecommendationLead> leads){
+    recommendationLeads.addAll(leads);
+    return leads;
+  }
+
+  public Object[] getAllLead(){
+    var res = recommendationLeads.toArray().clone();
+    recommendationLeads.clear();
+    return res;
   }
 }

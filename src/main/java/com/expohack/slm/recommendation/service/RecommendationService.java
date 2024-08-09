@@ -3,10 +3,12 @@ package com.expohack.slm.recommendation.service;
 import com.expohack.slm.matching.model.Client;
 import com.expohack.slm.matching.model.Product;
 import com.expohack.slm.matching.model.Sale;
+import com.expohack.slm.rabbitMq.ProducerService;
 import com.expohack.slm.recommendation.model.dto.RecommendationLead;
 import com.expohack.slm.recommendation.model.entity.RelatedProduct;
 import com.expohack.slm.recommendation.repository.RecommendationRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,13 +16,22 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class RecommendationService {
     private RecommendationRepository recommendationRepository;
 
-    public List<RecommendationLead> getRecommendationProducts(Sale sale){
+    private final ProducerService producerService;
+
+    public void getRecommendationProducts(Sale sale){
         List<RecommendationLead> recommendationAllLead = new ArrayList<>();
         Product soldProduct = sale.getProduct();
-        int numberOfSalesFirstProduct = soldProduct.getNumberOfSales();
+        int numberOfSalesFirstProduct = 0;
+        try {
+            numberOfSalesFirstProduct = soldProduct.getNumberOfSales();
+        }
+        catch (Exception ignored){
+
+        }
 
         List<RelatedProduct> allCombination = recommendationRepository.findAllBySoldProduct(soldProduct.getId());
         Client client = sale.getClient();
@@ -30,11 +41,8 @@ public class RecommendationService {
 
             recommendationAllLead.add(recommendationLead);
         }
-        return recommendationAllLead;
-    }
-
-    public void updateRecommendationProducts(Sale sale){
-
+        log.info("Продукт отпралятестя {}", sale.toString());
+        producerService.sendRecommendationLead(recommendationAllLead);
     }
 
     private static RecommendationLead getRecommendationLead(RelatedProduct potentialProduct,
