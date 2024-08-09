@@ -27,7 +27,7 @@ public class SalesDTO {
 
   private String clientSurname;
 
-  private LocalDate clientBirthdate;
+  private LocalDate clientBirthDate;
 
   private String clientMobilePhone;
 
@@ -45,7 +45,7 @@ public class SalesDTO {
 
   private String productAdditionalData;
 
-  private LocalDate validity;
+  private LocalDate validityDate;
 
   private LocalDate sendDate;
 

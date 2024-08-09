@@ -31,7 +31,7 @@ databaseChangeLog:
                   name: surname
                   type: varchar(255)
               - column:
-                  name: birthdate
+                  name: birth_date
                   type: date
               - column:
                   name: mobile_phone
