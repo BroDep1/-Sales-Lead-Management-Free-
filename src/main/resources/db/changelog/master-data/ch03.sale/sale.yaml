@@ -47,3 +47,8 @@ databaseChangeLog:
               - column:
                   name: sale_date
                   type: date
+              - column:
+                  name: system_status
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
