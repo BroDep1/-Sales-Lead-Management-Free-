@@ -4,6 +4,7 @@ import com.expohack.slm.authentication.model.dto.CompanyDto;
 import com.expohack.slm.matching.service.MatchingService;
 import com.expohack.slm.commons.model.SalesDTO;
 import com.expohack.slm.api.utils.ExcelCellsConverter;
+import com.expohack.slm.rabbitMq.ProducerService;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -24,6 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @Slf4j
 public class XlsxFileService {
+
+  private final ProducerService producerService;
 
   private final MatchingService matchingService;
 
@@ -107,7 +110,7 @@ public class XlsxFileService {
     for (SalesDTO salesDTO : listOfDto) {
       log.info(salesDTO.toString());
     }
-    matchingService.matchSales(listOfDto);
+    producerService.sendListOfSalesDto(listOfDto, companyDto);
     return Optional.empty();
   }
 }
