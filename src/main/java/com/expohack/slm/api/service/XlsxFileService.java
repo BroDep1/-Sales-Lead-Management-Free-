@@ -6,7 +6,6 @@ import com.expohack.slm.commons.model.SalesDTO;
 import com.expohack.slm.api.utils.ExcelCellsConverter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -66,7 +65,7 @@ public class XlsxFileService {
     }
     //Получение итератора по полям
     //Итерация происходит по списку методов, которые заполняют поля ДТО
-    var methodIterator = methods.iterator();
+
     //Итерация по строкам в таблице
     while (rawIterator.hasNext()) {
       //Получение текущей строки, ее итератора и билдера
@@ -74,6 +73,7 @@ public class XlsxFileService {
       var cellIterator = row.cellIterator();
       var builder = SalesDTO.builder();
       builderClass.getMethod("companyId", UUID.class).invoke(builder, companyId);
+      var methodIterator = methods.iterator();
       //Итерация по полям строки
       while (cellIterator.hasNext() && methodIterator.hasNext()) {
         //Получение доступа к методу, получение значения поля, и инвокация метода
@@ -102,9 +102,11 @@ public class XlsxFileService {
   }
 
   public Optional<Void> send(CompanyDto companyDto, MultipartFile file)
-      throws IOException, InvocationTargetException, IllegalAccessException {
+      throws IOException {
     var listOfDto = parse(companyDto.id(), file.getInputStream());
-    log.info(listOfDto.getFirst().toString());
+    for (SalesDTO salesDTO : listOfDto) {
+      log.info(salesDTO.toString());
+    }
     matchingService.matchSales(listOfDto);
     return Optional.empty();
   }
