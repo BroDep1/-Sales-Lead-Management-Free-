@@ -118,7 +118,7 @@ public class MatchingService {
               sale.getClientName(),
               sale.getClientMiddleName(),
               sale.getClientSurname(),
-              sale.getClientBirthdate(),
+              sale.getClientBirthDate(),
               sale.getClientMobilePhone(),
               sale.getClientEmail(),
               sale.getClientPassportSeries(),
@@ -132,7 +132,7 @@ public class MatchingService {
           client,
           productOptional.get(),
           sale.getProductAdditionalData(),
-          sale.getValidity(),
+          sale.getValidityDate(),
           sale.getSaleDate(),
           sale.getStatus()
       );
