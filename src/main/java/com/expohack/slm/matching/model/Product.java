@@ -1,5 +1,6 @@
 package com.expohack.slm.matching.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,4 +22,7 @@ public class Product {
   private String name;
 
   private String description;
+
+  @Column(name = "number_of_sales")
+  private Integer numberOfSales;
 }

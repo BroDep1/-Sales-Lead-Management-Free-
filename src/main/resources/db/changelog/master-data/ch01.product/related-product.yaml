@@ -35,3 +35,8 @@ databaseChangeLog:
                     nullable: false
                     foreignKeyName: fk_${relatedProduct}_${product}_recommended
                     references: ${product}(id)
+              - column:
+                  name: number_sales_this_combination
+                  type: int
+                  constraints:
+                    default: 0
