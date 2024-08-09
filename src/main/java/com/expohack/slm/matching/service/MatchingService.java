@@ -6,6 +6,8 @@ import com.expohack.slm.commons.repository.CompanyRepository;
 import com.expohack.slm.matching.model.Client;
 import com.expohack.slm.matching.model.Product;
 import com.expohack.slm.matching.model.Sale;
+import com.expohack.slm.rabbitMq.ProducerService;
+import com.expohack.slm.recommendation.service.RecommendationService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @RequiredArgsConstructor
 public class MatchingService {
+
+  private final RecommendationService recommendationService;
+
+  private final ProducerService producerService;
 
   private final ErrorService errorService;
   private final ClientService clientService;
@@ -138,6 +144,7 @@ public class MatchingService {
       );
 
       saleService.save(newSale);
+      recommendationService.getRecommendationProducts(newSale);
 
       // after all raw sales are processed
       // traverse through the errors and send notifications to the companies

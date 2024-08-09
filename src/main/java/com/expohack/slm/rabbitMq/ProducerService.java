@@ -3,6 +3,7 @@ package com.expohack.slm.rabbitMq;
 import com.expohack.slm.authentication.model.dto.CompanyDto;
 import com.expohack.slm.commons.model.SalesDTO;
 import com.expohack.slm.matching.model.Sale;
+import com.expohack.slm.recommendation.model.dto.RecommendationLead;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -23,9 +24,9 @@ public class ProducerService {
     log.info("Список продуктов отправлен матчиться. Файл загружен компанией {}.", companyDto.name());
   }
 
-  public void sendRecommendationLead(){
-    rabbitTemplate.convertAndSend("recommendationLeadQueue");
-    log.info("New recommendation lead {} sent to controller");
+  public void sendRecommendationLead(List<RecommendationLead> recommendationLeads){
+    rabbitTemplate.convertAndSend("recommendationLeadQueue", recommendationLeads);
+    log.info("New recommendation leads sent to controller");
   }
 }
 
