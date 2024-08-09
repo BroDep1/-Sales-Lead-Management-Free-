@@ -10,6 +10,11 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
       file-size-threshold: 2MB
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: admin
   application:
     name: '@project.artifactId@'
   datasource:
@@ -51,3 +56,4 @@ slm:
     key: remember-me-key
     token-validity-seconds: 604800
     use-secure-cookie: false
+
