@@ -29,3 +29,8 @@ databaseChangeLog:
               - column:
                   name: description
                   type: text
+              - column:
+                  name: number_of_sales
+                  type: int
+                  constraints:
+                    default: 0
