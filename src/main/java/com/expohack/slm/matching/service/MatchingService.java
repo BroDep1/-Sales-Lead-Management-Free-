@@ -29,6 +29,7 @@ public class MatchingService {
   // if an error occurs, we save it for further feedback to the company
   @Transactional
   public void matchSales(List<SalesDTO> rawSales) {
+    log.info("{}", rawSales);
     for (SalesDTO sale : rawSales) {
       if (sale.getCompanyId() == null || sale.getProductName() == null) {
         log.error(
