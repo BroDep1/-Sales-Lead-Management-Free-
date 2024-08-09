@@ -5,6 +5,7 @@ import com.expohack.slm.matching.service.MatchingService;
 import com.expohack.slm.recommendation.model.dto.RecommendationLead;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -26,13 +27,13 @@ public class ConsumerService {
   }
 
   @RabbitListener(queues = "recommendationLeadQueue")
-  public List<RecommendationLead> consumeRecommendations(List<RecommendationLead> leads){
+  public void consumeRecommendations(List<RecommendationLead> leads){
+    log.info("Получен список рекомендаций");
     recommendationLeads.addAll(leads);
-    return leads;
   }
 
-  public Object[] getAllLead(){
-    var res = recommendationLeads.toArray().clone();
+  public List<RecommendationLead> getAllLead(){
+    var res = recommendationLeads.stream().toList();
     recommendationLeads.clear();
     return res;
   }

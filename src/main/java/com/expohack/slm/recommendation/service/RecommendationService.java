@@ -41,7 +41,6 @@ public class RecommendationService {
 
             recommendationAllLead.add(recommendationLead);
         }
-        log.info("Продукт отпралятестя {}", sale.toString());
         producerService.sendRecommendationLead(recommendationAllLead);
     }
 
