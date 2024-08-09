@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Tag(name = "Загрузка файла")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("api/v1/upload-data")
 public class UpdateController {
 
   private final XlsxFileService xlsxFileService;
@@ -30,12 +31,12 @@ public class UpdateController {
       @ApiResponse(responseCode = "200", description = "Ok", content = @Content),
       @ApiResponse(responseCode = "401", description = "Пользователь не аутентифицирован",
           content = @Content)})
-  @PostMapping(value = "/api/v1/upload-data", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<Void> uploadXlsx(
       @Parameter(hidden = true)
       @ModelAttribute(AUTHENTICATED_USER_COMPANY) CompanyDto company,
       @Parameter(description = "Файл формата XLSX", required = true)
-      @RequestPart("xlsx-file") MultipartFile file) throws IOException {
+      @RequestParam("xlsx-file") MultipartFile file) throws IOException {
     xlsxFileService.send(company, file);
     return ResponseEntity.ok().build();
   }
