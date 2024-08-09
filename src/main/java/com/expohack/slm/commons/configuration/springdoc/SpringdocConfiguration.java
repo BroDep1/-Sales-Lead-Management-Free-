@@ -11,6 +11,15 @@ public class SpringdocConfiguration {
   private final String apiVersion = "v1";
 
   @Bean
+  public GroupedOpenApi allOpenApiGroup() {
+    String[] paths = {"/api/v1/**"};
+    return GroupedOpenApi.builder().group("gr00-all")
+            .displayName("Все API")
+            .pathsToMatch(paths)
+            .build();
+  }
+
+  @Bean
   public GroupedOpenApi authOpenApiGroup() {
     String[] paths = {"/api/v1/auth/**"};
     return GroupedOpenApi.builder().group("gr01-authorization")
@@ -59,8 +68,8 @@ public class SpringdocConfiguration {
 
   @Bean
   public GroupedOpenApi xlsxUploadOpenApiGroup() {
-    String[] paths = {"/api/upload-data/**"};
-    return GroupedOpenApi.builder().group("gr04-xlsx")
+    String[] paths = {"/api/v1/upload-data/**"};
+    return GroupedOpenApi.builder().group("gr05-xlsx")
         .displayName("Загрузка файла")
         .addOpenApiCustomizer(openApi -> openApi
             .info(new Info().title("XlsxUpload API")
